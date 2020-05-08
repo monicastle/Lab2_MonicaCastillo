@@ -208,7 +208,6 @@ public class Lab2_MonicaCastillo {
                         System.out.println("¡Debe ingresar al login primero!");
                     } // Fin If
                     break;
-
                 case 2:
                     if (valid == true) {
                         System.out.println("Casas Listas: ");
@@ -251,6 +250,7 @@ public class Lab2_MonicaCastillo {
                                         listas.remove(pos2);
                                     } // Fin If
                                 } // Fin For
+                                System.out.println("La casa fue modificada exitosamente");
                                 break;
                             case 2:
                                 System.out.println("Casas En Construccion:");
@@ -267,7 +267,7 @@ public class Lab2_MonicaCastillo {
                                     construccion.remove(pos3);
                                 } else {
                                     listas.add(construccion.get(pos3));
-                                    construccion.remove(3);
+                                    construccion.remove(pos3);
                                 }// Fin If
                                 break;
                             case 3:
@@ -296,12 +296,12 @@ public class Lab2_MonicaCastillo {
                                 int posi = entrada.nextInt();
                                 casas.remove(demolicion.get(posi));
                                 demolicion.remove(posi);
+                                System.out.println("La casa fue demolida con exito");
                         } // Fin Switch
                     } else {
                         System.out.println("¡Debe ingresar al login primero!");
                     } // Fin If
                     break;
-
                 case 3:
                     System.out.print("Ingrese el nombre de usuario: ");
                     String usuario = entrada.next();
@@ -328,5 +328,4 @@ public class Lab2_MonicaCastillo {
             } // Fin Switch
         } // Fin While Respuesta
     } // Fin Main
-
 } // Fin Class
