@@ -141,6 +141,6 @@ public class Casa {
     @Override
     public String toString() {
         return "Numero de casa: " + numcasa + ", Numero de bloque: " + numbloque + ", Color: " + color + ", Ancho: " + ancho + ", Largo: " + largo + ", Fue vendida o no: " + vendida + ", Numero de pisos: " + numpisos + ", Numero de baños: " + numbaños + ", Numero de Cuartos: " + numcuartos + ", Nombre del dueño: " + dueño + ", Estado: " + estado + ", Nombre del Ingeniero: " + ingeniero;
-    }
+    } // Fin To String
 
-}
+} // Fin Casa
