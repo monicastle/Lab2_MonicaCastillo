@@ -21,3 +21,6 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/Lab2_MonicaCastillo/nbproject/private/
+/probando/nbproject/private/
+/Lab2_MonicaCastillo/build/
