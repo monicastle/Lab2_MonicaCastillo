@@ -73,11 +73,31 @@ public class Lab2_MonicaCastillo {
                                 System.out.print("Ingrese el estado (Lista, En Construccion, Construccion en Espera, En Espera de Demolicion): ");
                                 String estado = entrada.nextLine();
                                 estado = entrada.nextLine();
+                                if (estado.equalsIgnoreCase("En Construccion")) {
+                                    int cons = 0;
+                                    cons++;
+                                    if (cons > 5) {
+                                        System.out.println("El limite de casas en construccion ha sido sobrepasado");
+                                        System.out.print("Ingrese el estado (Lista, Construccion en Espera, En Espera de Demolicion): ");
+                                        estado = entrada.nextLine();
+                                        estado = entrada.nextLine();
+                                    } // Fin If
+                                } else if (estado.equalsIgnoreCase("En espera de demolicion")) {
+                                    int esperademo = 0;
+                                    esperademo++;
+                                    if (esperademo > 3) {
+                                        System.out.println("El limite de casas en espera de demolicion ha sido sobrepasado");
+                                        System.out.print("Ingrese el estado (Lista, En Construccion, Construccion en Espera): ");
+                                        estado = entrada.nextLine();
+                                        estado = entrada.nextLine();
+                                    } // Fin If
+                                } // Fin If
                                 System.out.print("Ingrese el nombre del ingeniero: ");
                                 String ingeniero = entrada.nextLine();
                                 casas.add(new Casa(numcasa, numbloque, color, ancho, largo, vendida, numpisos, numbaños, numcuartos, dueño, estado, ingeniero));
                                 System.out.println("¡Su casa se ha agregado exitosamente!");
                                 break;
+
                             case 2:
                                 System.out.println("Listar Casas: ");
                                 for (Object o : casas) {
@@ -173,6 +193,7 @@ public class Lab2_MonicaCastillo {
                                 System.out.print("Ingrese la posicion de la casa que desea eliminar: ");
                                 int pos2 = entrada.nextInt();
                                 casas.remove(pos2);
+                                System.out.println("¡La casa se ha eliminado exitosamente!");
                                 break;
                             default:
                                 System.out.println("¡Entrada no valida!");
@@ -181,13 +202,30 @@ public class Lab2_MonicaCastillo {
                         System.out.println("¡Debe ingresar al login primero!");
                     } // Fin If
                     break;
+
                 case 2:
                     if (valid == true) {
-
+                        System.out.println("1. Lista");
+                        System.out.println("2. En Construccion");
+                        System.out.println("3. Construccion en Espera");
+                        System.out.print("Ingrese el estado que desea modificar : ");
+                        int pos = entrada.nextInt();
+                        switch (pos) {
+                            case 1:
+                                ((Casa) casas.get(pos)).setEstado("Espera de demolicion");
+                                break;
+                            case 2:
+                                ((Casa) casas.get(pos)).setEstado("En Construccion");
+                        }
+                        System.out.print("Ingrese el nuevo estado:");
+                        String estadonuevo = entrada.nextLine();
+                        estadonuevo = entrada.nextLine();
+                        ((Casa) casas.get(pos)).setEstado(estadonuevo);
                     } else {
                         System.out.println("¡Debe ingresar al login primero!");
                     } // Fin If
                     break;
+
                 case 3:
                     System.out.print("Ingrese el nombre de usuario: ");
                     String usuario = entrada.next();
