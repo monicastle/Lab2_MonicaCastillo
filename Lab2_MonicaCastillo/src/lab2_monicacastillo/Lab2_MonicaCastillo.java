@@ -54,42 +54,125 @@ public class Lab2_MonicaCastillo {
                                 double ancho = entrada.nextDouble();
                                 System.out.print("Ingrese el largo: ");
                                 double largo = entrada.nextDouble();
-                                System.out.print("Ingrese si la casa ya fue vendida o no (si/No): ");
+                                System.out.print("Ingrese si la casa ya fue vendida o no (Si/No): ");
                                 String vendida = entrada.next();
                                 System.out.print("Ingrese el numero de pisos: ");
                                 int numpisos = entrada.nextInt();
-                                System.out.print("Ingrese el numero de baños:");
+                                System.out.print("Ingrese el numero de baños: ");
                                 int numbaños = entrada.nextInt();
                                 System.out.print("Ingrese el numero de cuartos: ");
                                 int numcuartos = entrada.nextInt();
                                 String dueño;
-                                if (vendida.equals("si")) {
+                                if (vendida.equalsIgnoreCase("Si")) {
                                     System.out.print("Ingrese el dueño: ");
-                                    dueño = entrada.next();
+                                    dueño = entrada.nextLine();
+                                    dueño = entrada.nextLine();
                                 } else {
-                                    dueño = null;
+                                    dueño = "Sin dueño";
                                 }// Fin If
                                 System.out.print("Ingrese el estado (Lista, En Construccion, Construccion en Espera, En Espera de Demolicion): ");
                                 String estado = entrada.nextLine();
+                                estado = entrada.nextLine();
                                 System.out.print("Ingrese el nombre del ingeniero: ");
-                                String ingeniero = entrada.next();
+                                String ingeniero = entrada.nextLine();
                                 casas.add(new Casa(numcasa, numbloque, color, ancho, largo, vendida, numpisos, numbaños, numcuartos, dueño, estado, ingeniero));
                                 System.out.println("¡Su casa se ha agregado exitosamente!");
                                 break;
                             case 2:
+                                System.out.println("Listar Casas: ");
                                 for (Object o : casas) {
                                     System.out.println(casas.indexOf(o) + " = " + o);
                                 } // Fin For
                                 break;
                             case 3:
-                                System.out.println("Ingrese la posicion de la casa que desea modificar: ");
+                                for (Object o : casas) {
+                                    System.out.println(casas.indexOf(o) + " = " + o);
+                                } // Fin For
+                                System.out.print("Ingrese la posicion de la casa que desea modificar: ");
                                 int pos = entrada.nextInt();
-                                casas.get(pos);
+                                System.out.println("Atributos: ");
+                                System.out.println("1. Numero de casa");
+                                System.out.println("2. Numero de bloque");
+                                System.out.println("3. Color");
+                                System.out.println("4. Ancho");
+                                System.out.println("5. Largo");
+                                System.out.println("6. Fue vendida o no");
+                                System.out.println("7. Numero de pisos");
+                                System.out.println("8. Numero de baños");
+                                System.out.println("9. Numero de cuartos");
+                                System.out.println("10. Nombre del dueño");
+                                System.out.println("11. Nombre del ingeniero");
+                                System.out.print("Ingrese la posicion del atributo que desea modificar: ");
+                                int pos3 = entrada.nextInt();
+                                switch (pos3) {
+                                    case 1:
+                                        System.out.print("Ingrese el nuevo numero de casa: ");
+                                        numcasa = entrada.nextInt();
+                                        ((Casa) casas.get(pos)).setNumcasa(numcasa);
+                                        break;
+                                    case 2:
+                                        System.out.print("Ingrese el nuevo numero de bloque: ");
+                                        numbloque = entrada.nextInt();
+                                        ((Casa) casas.get(pos)).setNumbloque(numbloque);
+                                        break;
+                                    case 3:
+                                        System.out.print("Ingrese el nuevo color: ");
+                                        color = entrada.next();
+                                        ((Casa) casas.get(pos)).setColor(color);
+                                        break;
+                                    case 4:
+                                        System.out.print("Ingrese el nuevo ancho: ");
+                                        ancho = entrada.nextDouble();
+                                        ((Casa) casas.get(pos)).setAncho(ancho);
+                                        break;
+                                    case 5:
+                                        System.out.print("Ingrese el nuevo largo: ");
+                                        largo = entrada.nextDouble();
+                                        ((Casa) casas.get(pos)).setLargo(largo);
+                                        break;
+                                    case 6:
+                                        System.out.print("Ingrese si la casa fue vendida o no (Si/No): ");
+                                        vendida = entrada.next();
+                                        ((Casa) casas.get(pos)).setVendida(vendida);
+                                        break;
+                                    case 7:
+                                        System.out.print("Ingrese el nuevo numero de pisos: ");
+                                        numpisos = entrada.nextInt();
+                                        ((Casa) casas.get(pos)).setNumpisos(numpisos);
+                                        break;
+                                    case 8:
+                                        System.out.print("Ingrese el nuevo numero de baños: ");
+                                        numbaños = entrada.nextInt();
+                                        ((Casa) casas.get(pos)).setNumbaños(numbaños);
+                                        break;
+                                    case 9:
+                                        System.out.print("Ingrese el nuevo numero de cuartos: ");
+                                        numcuartos = entrada.nextInt();
+                                        ((Casa) casas.get(pos)).setNumcuartos(numcuartos);
+                                        break;
+                                    case 10:
+                                        System.out.print("Ingrese el nuevo dueño: ");
+                                        dueño = entrada.nextLine();
+                                        dueño = entrada.nextLine();
+                                        ((Casa) casas.get(pos)).setDueño(dueño);
+                                        break;
+                                    case 11:
+                                        System.out.print("Ingrese el nuevo nombre del ingeniero: ");
+                                        ingeniero = entrada.nextLine();
+                                        ((Casa) casas.get(pos)).setIngeniero(ingeniero);
+                                        break;
+                                    default:
+                                        System.out.println("¡Entrada no valida!");
+                                } // Fin Switch
+                                System.out.println("¡Se ha hecho la modificacion exitosamente!");
                                 break;
                             case 4:
                                 for (Object o : casas) {
-                                    System.out.println(o);
+                                    System.out.println(casas.indexOf(o) + " = " + o);
                                 } // Fin For
+                                System.out.print("Ingrese la posicion de la casa que desea eliminar: ");
+                                int pos2 = entrada.nextInt();
+                                casas.remove(pos2);
                                 break;
                             default:
                                 System.out.println("¡Entrada no valida!");
