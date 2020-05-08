@@ -227,22 +227,76 @@ public class Lab2_MonicaCastillo {
                         for (Object o : demolicion) {
                             System.out.println(demolicion.indexOf(o) + " = " + o);
                         } // Fin For
+                        System.out.println("Tipos de Casa: ");
                         System.out.println("1. Lista");
                         System.out.println("2. En Construccion");
                         System.out.println("3. Construccion en Espera");
+                        System.out.println("4. Casas en Espera de Demolicion: ");
                         System.out.print("Ingrese el estado que desea modificar : ");
                         int pos = entrada.nextInt();
                         switch (pos) {
                             case 1:
-                                ((Casa) casas.get(pos)).setEstado("Espera de demolicion");
+                                System.out.println("Casas Listas: ");
+                                for (Object o : listas) {
+                                    System.out.println(listas.indexOf(o) + " = " + o);
+                                } // Fin For
+                                System.out.print("Ingrese la posicion de la casa que desea cambiar: ");
+                                int pos2 = entrada.nextInt();
+                                for (int i = 0; i < demolicion.size(); i++) {
+                                    if (i >= 3) {
+                                        System.out.println("La casa no puede ser modificada");
+                                    } else {
+                                        ((Casa) casas.get(pos2)).setEstado("Espera de demolicion");
+                                        demolicion.add(listas.get(pos2));
+                                        listas.remove(pos2);
+                                    } // Fin If
+                                } // Fin For
                                 break;
                             case 2:
-                                ((Casa) casas.get(pos)).setEstado("En Construccion");
-                        }
-                        System.out.print("Ingrese el nuevo estado:");
-                        String estadonuevo = entrada.nextLine();
-                        estadonuevo = entrada.nextLine();
-                        ((Casa) casas.get(pos)).setEstado(estadonuevo);
+                                System.out.println("Casas En Construccion:");
+                                for (Object o : construccion) {
+                                    System.out.println(construccion.indexOf(o) + " = " + o);
+                                } // Fin For
+                                System.out.print("Ingrese la posicion de la casa que desea cambiar: ");
+                                int pos3 = entrada.nextInt();
+                                System.out.println("Ingrese el estado al que desea cambiar (Construccion en espera / Listas");
+                                String nuevo = entrada.nextLine();
+                                ((Casa) casas.get(pos3)).setEstado(nuevo);
+                                if (nuevo.equalsIgnoreCase("Construccion en espera")) {
+                                    construccionespera.add(construccion.get(pos3));
+                                    construccion.remove(pos3);
+                                } else {
+                                    listas.add(construccion.get(pos3));
+                                    construccion.remove(3);
+                                }// Fin If
+                                break;
+                            case 3:
+                                System.out.println("Casas en Construccion es Espera");
+                                for (Object o : construccionespera) {
+                                    System.out.println(construccionespera.indexOf(o) + " = " + o);
+                                } // Fin For  
+                                System.out.print("Ingrese la posicion de la casa que desea cambiar: ");
+                                int pos4 = entrada.nextInt();
+                                for (int i = 0; i < construccion.size(); i++) {
+                                    if (i >= 5) {
+                                        System.out.println("La casa no puede ser modificada");
+                                    } else {
+                                        ((Casa) casas.get(pos4)).setEstado("En Construccion");
+                                        construccion.add(construccionespera.get(pos4));
+                                        construccionespera.remove(pos4);
+                                    } // Fin If
+                                } // Fin For
+                                break;
+                            case 4:
+                                System.out.println("Casas En Espera de Demolicion: ");
+                                for (Object o : demolicion) {
+                                    System.out.println(demolicion.indexOf(o) + " = " + o);
+                                } // Fin For
+                                System.out.println("Ingrese la posicion de la casa que desea demoler: ");
+                                int posi = entrada.nextInt();
+                                casas.remove(demolicion.get(posi));
+                                demolicion.remove(posi);
+                        } // Fin Switch
                     } else {
                         System.out.println("¡Debe ingresar al login primero!");
                     } // Fin If
@@ -251,12 +305,15 @@ public class Lab2_MonicaCastillo {
                 case 3:
                     System.out.print("Ingrese el nombre de usuario: ");
                     String usuario = entrada.next();
-                    System.out.print("Ingrese la contraseña: ");
-                    String contraseña = entrada.next();
-                    while (!usuario.equals("leobanegas") && !contraseña.equals("99")) {
-                        System.out.println("El nombre de usuario o la contraseña es incorrecto");
+                    while (!usuario.equals("leobanegas")) {
+                        System.out.println("El nombre de usuario es incorrecto");
                         System.out.print("Ingrese el nombre de usuario: ");
                         usuario = entrada.next();
+                    } // Fin While
+                    System.out.print("Ingrese la contraseña: ");
+                    String contraseña = entrada.next();
+                    while (!contraseña.equals("99")) {
+                        System.out.println("La contraseña es incorrecta");
                         System.out.print("Ingrese la contraseña: ");
                         contraseña = entrada.next();
                     } // Fin While Validacion
