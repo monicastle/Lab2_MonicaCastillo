@@ -16,6 +16,10 @@ public class Lab2_MonicaCastillo {
 
     static Scanner entrada = new Scanner(System.in);
     static ArrayList casas = new ArrayList();
+    static ArrayList listas = new ArrayList();
+    static ArrayList construccion = new ArrayList();
+    static ArrayList construccionespera = new ArrayList();
+    static ArrayList demolicion = new ArrayList();
     static boolean valid;
 
     /**
@@ -70,30 +74,32 @@ public class Lab2_MonicaCastillo {
                                 } else {
                                     dueño = "Sin dueño";
                                 }// Fin If
-                                System.out.print("Ingrese el estado (Lista, En Construccion, Construccion en Espera, En Espera de Demolicion): ");
-                                String estado = entrada.nextLine();
-                                estado = entrada.nextLine();
-                                if (estado.equalsIgnoreCase("En Construccion")) {
-                                    int cons = 0;
-                                    cons++;
-                                    if (cons > 5) {
-                                        System.out.println("El limite de casas en construccion ha sido sobrepasado");
-                                        System.out.print("Ingrese el estado (Lista, Construccion en Espera, En Espera de Demolicion): ");
-                                        estado = entrada.nextLine();
-                                        estado = entrada.nextLine();
-                                    } // Fin If
-                                } else if (estado.equalsIgnoreCase("En espera de demolicion")) {
-                                    int esperademo = 0;
-                                    esperademo++;
-                                    if (esperademo > 3) {
-                                        System.out.println("El limite de casas en espera de demolicion ha sido sobrepasado");
-                                        System.out.print("Ingrese el estado (Lista, En Construccion, Construccion en Espera): ");
-                                        estado = entrada.nextLine();
-                                        estado = entrada.nextLine();
-                                    } // Fin If
-                                } // Fin If
                                 System.out.print("Ingrese el nombre del ingeniero: ");
                                 String ingeniero = entrada.nextLine();
+                                ingeniero = entrada.nextLine();
+                                System.out.print("Ingrese el estado (Lista, En Construccion, Construccion en Espera, En Espera de Demolicion): ");
+                                String estado = entrada.nextLine();
+                                int c = 0,
+                                 c2 = 0;
+                                if (estado.equalsIgnoreCase("Lista")) {
+                                    listas.add(new Casa(numcasa, numbloque, color, ancho, largo, vendida, numpisos, numbaños, numcuartos, dueño, estado, ingeniero));
+                                } else if (estado.equalsIgnoreCase("Construccion en Espera")) {
+                                    construccionespera.add(new Casa(numcasa, numbloque, color, ancho, largo, vendida, numpisos, numbaños, numcuartos, dueño, estado, ingeniero));
+                                } else if (estado.equalsIgnoreCase("En Construccion")) {
+                                    c++;
+                                    if (c <= 5) {
+                                        construccion.add(new Casa(numcasa, numbloque, color, ancho, largo, vendida, numpisos, numbaños, numcuartos, dueño, estado, ingeniero));
+                                    } else {
+                                        System.out.println("¡Ha sobrepasado el maximo de casas en construccion!");
+                                    } // Fin If
+                                } else if (estado.equalsIgnoreCase("En espera de demolicion")) {
+                                    c2++;
+                                    if (c <= 3) {
+                                        demolicion.add(new Casa(numcasa, numbloque, color, ancho, largo, vendida, numpisos, numbaños, numcuartos, dueño, estado, ingeniero));
+                                    } else {
+                                        System.out.println("¡Ha sobrepasado el maximo de casas en demolicion!");
+                                    }// Fin If
+                                } // Fin If
                                 casas.add(new Casa(numcasa, numbloque, color, ancho, largo, vendida, numpisos, numbaños, numcuartos, dueño, estado, ingeniero));
                                 System.out.println("¡Su casa se ha agregado exitosamente!");
                                 break;
@@ -205,6 +211,22 @@ public class Lab2_MonicaCastillo {
 
                 case 2:
                     if (valid == true) {
+                        System.out.println("Casas Listas: ");
+                        for (Object o : listas) {
+                            System.out.println(listas.indexOf(o) + " = " + o);
+                        } // Fin For
+                        System.out.println("Casas En Construccion:");
+                        for (Object o : construccion) {
+                            System.out.println(construccion.indexOf(o) + " = " + o);
+                        } // Fin For
+                        System.out.println("Casas en Construccion es Espera");
+                        for (Object o : construccionespera) {
+                            System.out.println(construccionespera.indexOf(o) + " = " + o);
+                        } // Fin For
+                        System.out.println("Casas En Espera de Demolicion: ");
+                        for (Object o : demolicion) {
+                            System.out.println(demolicion.indexOf(o) + " = " + o);
+                        } // Fin For
                         System.out.println("1. Lista");
                         System.out.println("2. En Construccion");
                         System.out.println("3. Construccion en Espera");
